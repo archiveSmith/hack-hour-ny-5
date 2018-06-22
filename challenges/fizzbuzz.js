@@ -32,6 +32,18 @@ function fizzbuzz(num) {
   }
   return result;
 }
+
+function fizzbuzz_Alise(num){
+  let result = [];
+  for(let i = 1; i <= num; i++){
+    let string = "";  
+    if(i % 3 === 0) string+= "fizz";
+    if(i % 5 === 0) string+= "buzz";
+    if(string) result.push(string);
+    else result.push(i);
+  }
+  return result;
+}
 console.log(fizzbuzz(16));
 
 module.exports = fizzbuzz;
