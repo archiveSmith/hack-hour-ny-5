@@ -14,8 +14,20 @@
 */
 
 function drawStairs(n) {
-
+    for (let i = 1; i <= n; i++) {
+        let current_level = '';
+        // print n-i spaces
+        for (let j = n; j > i; j--) {
+            current_level += ' ';
+        }
+        // print i asterisks. n characters will always be printed per line, making the lines right-justified.
+        for (let j = i; j > 0; j--) {
+            current_level += '*';
+        }
+        console.log(current_level);
+    }
 }
 
+drawStairs(12);
 
 module.exports = drawStairs;
