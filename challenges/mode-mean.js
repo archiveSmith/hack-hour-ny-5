@@ -11,15 +11,19 @@
 
 
  function modemean(array) {
-   const storage = {};
    let mean = 0, mode;
-   for (let i = 0; i < array.length; i++) {
-     mean += array[i];
-     storage[array[i]] === undefined ? storage[array[i]] = 1 : storage[array[i]]++;
-   }
+   // storing all the occurences of numbers in object, storing the sum of all elements in the array in the variable mean
+   let storage = array.reduce((obj, num) => {
+     mean += num;
+     !obj[num] ? obj[num] = 1 : obj[num]++;
+     return obj;
+   }, {})
+   //calculating the mean
    mean = Math.floor(mean / array.length);
-   mode = Math.max(...Object.values(storage));
-   return mode === mean;
+   //finding the max of modes in the sorted array of storage keys
+   Object.keys(storage).sort().reduce((prev, curr) =>             storage[curr] >= prev ? mode = curr : mode, 0);
+
+   return mode == mean;
  }
 
 module.exports = modemean;
