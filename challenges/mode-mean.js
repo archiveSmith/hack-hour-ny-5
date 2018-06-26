@@ -68,21 +68,22 @@ function modemean(array) { //[1, 1, 1, 2, 2, 2]
 // With the current array set up ([${array}]), mode = mean would evaluate to ${finalMode === mean}`)
 //  return finalMode == mean;
 // } 
+
 //Alex hack hour solution
-function modemean (array) {
-  const sum = array.reduce((acc, cur) => acc + cur);
-  const count = array.length;
-  const mean = Math.floor(sum / count);
+// function modemean (array) {
+//   const sum = array.reduce((acc, cur) => acc + cur);
+//   const count = array.length;
+//   const mean = Math.floor(sum / count);
 
-  const max;
-  const frequencies = array.reduce((acc, cur) => {
-    if (cur in counts) counts[cur] += 1;
-    else counts[cur] = 1;
-    return counts;
-  }), {};
-  const mode = 
+//   const max;
+//   const frequencies = array.reduce((acc, cur) => {
+//     if (cur in counts) counts[cur] += 1;
+//     else counts[cur] = 1;
+//     return counts;
+//   }), {};
+//   const mode = 
 
-  return mean === mode;
-}
+//   return mean === mode;
+// }
 
 module.exports = modemean;
