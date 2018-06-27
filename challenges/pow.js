@@ -4,6 +4,9 @@
 
 function pow(base, power) {
     function powHelper(result, b, p) {
+        if (p < 0) {
+            return 1 / (powHelper(result, b, p*-1));
+        }
         if (p === 0) {
             return 1;
         }
