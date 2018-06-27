@@ -14,6 +14,11 @@
  * d.next = e;
  *
  * kthToLastNode(2, a); -> returns 'D' (the value on the second to last node)
+ * Edge Cases :
+ * K < 1 -
+ * list is not an object
+ * K / link list is not defined
+ *
  */
 
 function Node(val) {
@@ -22,18 +27,58 @@ function Node(val) {
   //this.prev = null; this.prev = this.head
 }
 
-function kthToLastNode(k, head) { //return count - (k - 1)
+function kthToLastNode(k, head) { //return count - (k - 1) /--> O(2N) / SO(N)
 	let [nodeCount, targetNode, nodeChecks] = [0, /*yet to be defined*/ , head];
+	if(k < 1 || !k || !head || Number.isInteger(k) || typeof head !== "object") return undefined
 
 	while(nodeChecks.next !== null){
 		nodeChecks = nodeChecks.next;
 		nodeCount++;
 	} 
-	for(let i = 0; i < nodeCount - (k - 1); i++) {
+	if(height < k) return undefined
+	for(let i = 0; i <= nodeCount - k; i++) {
 	  head = head.next
       targetNode = head; 
 	}
 	return targetNode;
 }
+
+// function kthToLastNode(k, head) { //return count - (k - 1) /--> T: O(N) / S: O(N)
+// 	if(k < 1 || !k || !head || Number.isInteger(k) || typeof head !== "object") return undefined
+// 	let array = [];
+// 	while(head) {
+// 		array.push(push.value);
+// 		head = head.next
+// 	}
+// 	if(array.length - k) return undefined;
+// 	return array[array.length -k]
+// }
+
+//Shane Yao 
+// function kthToLastNode(k, head) { //return count - (k - 1) /--> T: O(N) / S: O(N)
+// 	if(k < 1 || !k || !head || Number.isInteger(k) || typeof head !== "object") return undefined;
+// 	let current1 = head;
+// 	let current2 = head;
+// 	let height = 1;
+// 	while(height <= k){
+// 		height++;
+// 		current1 = current1.next
+// 	}
+// 	while(current1) {
+// 		current1 = current1.next;
+// 		current2 = current2.next;
+// 	}
+// 	return current2.value;
+// }
+
+
+
+
+
+
+
+
+
+
 
 module.exports = {Node: Node, kthToLastNode: kthToLastNode};
