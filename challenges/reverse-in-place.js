@@ -14,6 +14,8 @@
  */
 
  function reverseInPlace(array) {
+   // handling edge case
+   if(!Array.isArray(array)) return;
   // looping through the array to get indeces of the elements to swap
    for(let i = 0; i < array.length / 2; i++) {
      let insertAtIndex = array.length - 1 - i;
