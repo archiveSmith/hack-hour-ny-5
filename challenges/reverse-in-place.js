@@ -13,6 +13,7 @@
  * DO NOT USE THE BUILT IN REVERSE METHOD
  */
 
+<<<<<<< HEAD
  function reverseInPlace(array) {
    // handling edge case
    if(!Array.isArray(array)) return;
@@ -25,5 +26,10 @@
    }
    return array;
  }
+=======
+function reverseInPlace(array) {
+
+}
+>>>>>>> 13bcbbaeb10577fc3a298b4d86c18eb67ac573a9
 
 module.exports = reverseInPlace;
