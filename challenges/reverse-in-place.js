@@ -12,9 +12,27 @@
  *
  * DO NOT USE THE BUILT IN REVERSE METHOD
  */
-
+// "Hello" --> "olleH"
 function reverseInPlace(array) {
-
+  
+  for (let i = 0; i < Math.floor(array.length - (i + 1)); i++) {
+    let [first, last] = [ array[i], array[array.length - (i + 1) ] ];
+    [ array[i], array[array.length - (i + 1) ] ] = [last, first];
+  }
+  return array;
 }
+let arr = ['h','e','l','l','o'];
+// console.log(reverseInPlace(arr))
+// console.log(reverseInPlace("Hello"))
+console.log(["c","a","b"].join(""));
+// function reverseInPlace(array) { 
+//   for (let i = 0; i < Math.floor(array.length/2); i++) {
+// 	  [array[i], array[array.length - 1 - i]] = [array[array.length - 1 - i], array[i]];
+//   console.log(array)
+//   }
+//   return array;
+// }
+
+
 
 module.exports = reverseInPlace;
