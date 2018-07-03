@@ -17,11 +17,10 @@ function isSubstring(s1, s2) { // compares s2 to the s1 string. Returns true or 
 }
 // 
 // stringRotation("heello", "ellohe") true
+// base cases - are s1 & s2 the same length
+// s1.length === s2.length && isSubstring(s1.concat(s1), s2) 
+// hellohello to see if ellohe is there
 function stringRotation(s1, s2) {
-//   let lowerstr1 = s1.toLowerCase();
-//   let lowerstr2 = s2.toLowerCase();
-//   let consecLetterCount = 0;
-    // let place = 0;
     let firstStrArr = s1.split(""); 
     for(let i = 0; i < s1.length; i++) {
        if(s1[i] === s2[0]) { // [H, e, l, l, o] === [e] // i = 1
@@ -32,7 +31,7 @@ function stringRotation(s1, s2) {
        }
     }
     return false;
-}
+} 
 
 console.log(isSubstring("Heello","ello"));
 

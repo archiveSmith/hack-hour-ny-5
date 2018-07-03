@@ -27,6 +27,57 @@ console.log(reverseInPlace(arr))
 // console.log(reverseInPlace("Hello"))
 // console.log(["c","a","b"].join(""));
 
+// Solution 1
+function reverseInPlace(array){
+  return array.reverse();
+}
+
+//Solution 2
+// function reverseInPlace(array) {
+//  // If input is not an array, tell user to insert array
+//  if (!Array.isArray(array)) return 'Please insert array';
+//  let left;
+//  let right;
+//  const length = array.length;
+//  for (left = 0, right = length - 1; left < right; left += 1, right -= 1){
+//    let temporary = array[left];
+//    array[left] = array[right];
+//    array[right] = temporary;
+//  }
+//  return array;
+// }
+
+
+// Solution 3
+// function reverseInPlace(array) {
+//  for (let i=0; i<array.length; i++){
+//    array.splice(i,0,array.pop())
+//  }
+//  return array
+// }
+
+// Solution 4: ES6
+// function reverseInPlace(array) {
+//  // Loop through first half of array only since all elements will be swapped by then
+//  for (let i = 0; i < array.length / 2; i++) {
+//    [array[i], array[array.length - 1 - i]] = [array[array.length - 1 - i], array[i]];
+//  }
+//  // Return array modified in place
+//  return array;
+// } 
+
+// Solution 5: Bitwise Operator
+// function reverseInPlace(array) {
+//  for (let i = 0; i < array.length / 2; i += 1) {
+//    let left = array[i];
+//    let right = array[array.length - 1 - i];
+//    let temp = left ^ right;
+//    array[i] = temp ^ left;
+//    array[array.length - 1 - i] = temp ^ right;
+//  }
+//  return array
+// }
+
 // XOR bitwise operator
 // 0 ^ 0 = 0 --> the same variable bit wise place to the same variable will be the same;
 // 0 ^ 1 = 1  
