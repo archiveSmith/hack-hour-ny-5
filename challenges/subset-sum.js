@@ -9,7 +9,20 @@
  */
 
 function subsetSum(array, target) {
-
+    function ssHelper(index, runningSum) {
+        if (runningSum === target) {
+            return true;
+        }
+        if (index < array.length) {
+            return ssHelper(index + 1, runningSum + array[index]) 
+                || ssHelper(index + 1, runningSum);
+        }
+        return false;
+    }
+    if (array && array.length > 0) {
+        return ssHelper(0, 0);
+    }
+    return false;
 }
 
 module.exports = subsetSum;
