@@ -14,7 +14,25 @@
  */
 
 function binToDec(binary) {
+  if(typeof binary != 'string' || !binary) return undefined;
+  return parseInt(binary, 2);
+}
 
+
+
+
+function decToBin(decimal) {
+  if(typeof decimal != 'number' || !decimal) return undefined;
+  this.remainder = this.remainder === undefined ? [] : this.remainder;
+  if(decimal === 1) {
+    remainder.unshift(1);
+    return remainder;
+  }
+  if (decimal > 0) {
+    remainder.unshift(decimal % 2);
+    decToBin(Math.floor(decimal / 2));
+  }
+  return remainder.join('');
 }
 
 module.exports = binToDec;
