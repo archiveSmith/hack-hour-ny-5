@@ -13,12 +13,16 @@
  * Write a function that converts a decimal number to binary (then maybe hexadecimal)
  */
 
-function binToDec(binary) {
-  if(typeof binary != 'string' || !binary) return undefined;
-  return parseInt(binary, 2);
-}
-
-
+ function binToDec(binary) {
+   if(!binary || binary.length === 0 || typeof binary !== 'string') return undefined;
+   let arr = binary.split('');
+   let result = 0;
+   arr.forEach((digit) => {
+     console.log(result)
+     result = 2 * result + parseInt(digit);
+   });
+   return result;
+ }
 
 
 function decToBin(decimal) {
