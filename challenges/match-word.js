@@ -11,7 +11,26 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
-
+  const stack = [];
+  const reversedStringsStack = [];
+  let runString = '';
+  for (let i = 0; i <= str.length; i++) {
+    if (i < str.length && 'abcdefghijklmnopqrstuvwxyz'.indexOf(str.charAt(i).toLowerCase()) !== -1) {
+      runString += str.charAt(i).toLowerCase();
+    }
+    else if (runString.length > 0) {
+      if (reversedStringsStack.length > 0 && reversedStringsStack[reversedStringsStack.length - 1] === runString) {
+        stack.pop();
+        reversedStringsStack.pop();
+      }
+      else {
+        stack.push(runString);
+        reversedStringsStack.push(runString.split('').reverse().join(''));
+      }
+      runString = '';
+    }
+  }
+  return stack.length === 0;
 }
 
 module.exports = matchWord;
