@@ -27,4 +27,37 @@ function binToDec(binary) {
   return result;
 }
 
+// Reduce method
+
+function hexToDec(hexadecimal) {
+  let result = 0;
+  let reversed = hexadecimal.split("").reverse();
+
+  for (let i = 0; i < reversed.length; i++) {
+    switch (!Number.isInteger(reversed[i])) {
+      case "A" || "a":
+        result += 10 * Math.pow(16, i);
+        break;
+      case "B" || "b":
+        result += 11 * Math.pow(16, i);
+        break;
+      case "C" || "c":
+        result += 12 * Math.pow(16, i);
+        break;
+      case "D" || "d":
+        result += 13 * Math.pow(16, i);
+        break;
+      case "E" || "e":
+        result += 14 * Math.pow(16, i);
+        break;
+      case "F" || "f":
+        result += 15 * Math.pow(16, i);
+        break;
+      default:
+        result += parseInt(reversed[i]); // adds the integer normally if not a letter
+    }
+  }
+  return result;
+}
+
 module.exports = binToDec;

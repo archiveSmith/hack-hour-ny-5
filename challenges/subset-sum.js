@@ -9,13 +9,10 @@
  */
 
 function subsetSum(array, target) {
-  let arrayCopy = array.slice();
-  for (let i = 0; i < arrayCopy.length; i++) {
-    if (arrayCopy[i] > target) {
-      arrayCopy.splice(i, 1);
-    }
-  }
-  target - arrayCopy[i];
+  // let arrayCopy = array.slice();
+  let startPoint = 0;
+
+  while (startPoint !== target) {}
 }
 subsetSum([3, 7, 4, 2], 5);
 
