@@ -3,13 +3,17 @@
  */
 
 function highestProduct(array) {
-  if (array.length >= 3) {
+  if (! array instanceof Array) {
+    return 0;
+  }
+  else if (array.length >= 3) {
     const firstThree = array.slice(0,3).sort();
     let largestNumber = firstThree[2];
     let secondLargestNumber = firstThree[1];
-    let thirdLargestNumber = firstThree[0]; 
+    let thirdLargestNumber = firstThree[0];
+    let smallestNumber = thirdLargestNumber;
+    let secondSmallestNumber = secondLargestNumber;
     for (let i = 3; i < array.length; i++) {
-      console.log(largestNumber + ', ' + secondLargestNumber + ', ' + thirdLargestNumber);
       if (array[i] > largestNumber) {
         thirdLargestNumber = secondLargestNumber;
         secondLargestNumber = largestNumber;
@@ -22,8 +26,23 @@ function highestProduct(array) {
       else if (array[i] > thirdLargestNumber) {
         thirdLargestNumber = array[i];
       }
+      if (array[i] < smallestNumber) {
+        secondSmallestNumber = smallestNumber;
+        smallestNumber = array[i];
+      }
+      else if (array[i] < secondSmallestNumber) {
+        secondSmallestNumber = array[i];
+      }
     }
-    return largestNumber * secondLargestNumber * thirdLargestNumber;
+    const largeProd = largestNumber * secondLargestNumber * thirdLargestNumber;
+    const checkNegProd = largestNumber * smallestNumber * secondSmallestNumber;
+    if (largeProd > checkNegProd) {
+      return largeProd;
+    }
+    return checkNegProd;
+  }
+  else {
+    return 0;
   }
 }
 
