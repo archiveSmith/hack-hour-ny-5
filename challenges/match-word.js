@@ -10,6 +10,9 @@
 // step 1 would be to figure out if the character is a letter -> word // could use regex to get rid of all special characters except spaces or punctuations
 // if the string is equal to its reversed order && also has a space or punctuation inbetween the words
 
-function matchWord(str) {}
+function matchWord(str) {
+  let stack = [];
+  let strArr = str.split("");
+}
 
 module.exports = matchWord;
