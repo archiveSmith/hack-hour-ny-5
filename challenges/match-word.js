@@ -11,6 +11,11 @@
 // matchWord('');  -> true
 
 function matchWord(str) {
+// must be separated by space
+// leading and trailing non-alphabetical chars are disregarded
+
+// loop thru and track whether chars are repeated, but indexes don't necessarily help due to trailing and leading chars...
+
 
 }
 
