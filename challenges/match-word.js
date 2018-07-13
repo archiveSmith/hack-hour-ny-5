@@ -15,4 +15,24 @@ function matchWord(str) {
   let strArr = str.split("");
 }
 
+//Shanes Amazing solution
+function matchWord(str) {
+  if (typeof str !== "string") return "bad input";
+  if (str === "") return true;
+
+  let stack = [];
+  let wordArr = str.split(/[^a-z]/gi).filter(el => el.length);
+  if (wordArr % 2) return false;
+  console.log("here");
+  wordArr.forEach(word => {
+    word
+      .split("")
+      .reverse()
+      .join("") === stack[stack.length - 1]
+      ? stack.pop()
+      : stack.push(word);
+  });
+  return !stack.length;
+}
+
 module.exports = matchWord;

@@ -3,6 +3,7 @@
  */
 
 function highestProduct(array, n = 3) {
+  if (!Array.isArray(array)) return false;
   let result = 1;
   let sorted = array.sort((a, b) => {
     return b - a;
@@ -12,16 +13,5 @@ function highestProduct(array, n = 3) {
   }
   return result;
 }
-
-// function highestProduct(array, n = 3) {
-//   let result = 1;
-//   let sorted = array.sort((a, b) => {
-//     return b - a;
-//   });
-//   for (let i = 0; i < n; i++) {
-//     result *= sorted[i];
-//   }
-//   return result;
-// }
 
 module.exports = highestProduct;
