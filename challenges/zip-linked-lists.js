@@ -55,8 +55,8 @@ function zip(l1, l2) {
 //   } 
 // }
 
-printll(l1);
-printll(l2);
-printll(zip(l1, l2));
+// printll(l1);
+// printll(l2);
+// printll(zip(l1, l2));
 
 module.exports = {Node: Node, zip: zip};
