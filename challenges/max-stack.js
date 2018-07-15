@@ -13,11 +13,11 @@
 
   this.push = (element) => {
     this[this.length] = element;
-    this.max = this.max < element ? element : this.max;
+    if (this.max < element) this.max = element;
     return ++this.length;
   }
 
-  this.pop = (element) => {
+  this.pop = () => {
     const popped = this[this.length-1];
     --this.length;
     return popped;
