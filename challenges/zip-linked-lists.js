@@ -10,17 +10,17 @@ function Node(val) {
   this.next = null;
 }
 
-function zip(l1, l2) {
-  let l1Arr = [];
-  let l2Arr = [];
-  let currlist1;
-  let currlist2;
-  // check if this is last node in the linked list. If it is stop the while loop
-  while (l1.next !== null || l2.next !== null) {
-    currlist1 = l1.next;
-    currlist2 = l2.next;
-  }
-}
+// function zip(l1, l2) {
+//   let l1Arr = [];
+//   let l2Arr = [];
+//   let currlist1;
+//   let currlist2;
+//   // check if this is last node in the linked list. If it is stop the while loop
+//   while (l1.next !== null || l2.next !== null) {
+//     currlist1 = l1.next;
+//     currlist2 = l2.next;
+//   }
+// }
 
 function zip(l1, l2) {
   // Setting pointer variables.
