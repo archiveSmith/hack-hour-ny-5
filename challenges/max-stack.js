@@ -24,9 +24,8 @@ Stack.prototype.pop = function() {
   const item = this.items[this.length - 1];
   this.length -= 1;
 
-  if (this.length === 0) {
-    this.max = undefined;
-  } else if (this.max === item) {
+  if (this.length === 0) this.max = undefined;
+  else if (this.max === item) {
     for (let i = 0; i < this.length; i++) {
       if (this.max < this.items[i]) this.max = this.items[i];
     }
