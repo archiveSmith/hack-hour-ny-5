@@ -14,7 +14,11 @@ function Node(value) {
 }
 
 function reverseLinkedList(head) {
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 7566c3c3d173b242dc6eda88123902cc1f8dc408
 }
 
 module.exports = {Node: Node, reverseLinkedList: reverseLinkedList};
