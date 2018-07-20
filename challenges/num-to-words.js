@@ -59,18 +59,11 @@ function numToWords(num) {
         pow = 15;
     }
     let toWord = numToWords(Math.floor(num / Math.pow(10, pow))) + powToWord[pow];
-    if ((num % Math.pow(10, pow)) !== 0) {
-        toWord = toWord + numToWords(num % Math.pow(10, pow));
+    const endPart = num % Math.pow(10, pow);
+    if (endPart !== 0) {
+        toWord = toWord + numToWords(endPart);
     }
     return toWord;
 }
-
-console.log(numToWords(0));
-console.log(numToWords(43));
-console.log(numToWords(2999));
-console.log(numToWords(15));
-console.log(numToWords(2483579411));
-console.log(numToWords(300525151340440));
-console.log(numToWords(92120000000000000));
 
 module.exports = numToWords;
