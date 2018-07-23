@@ -17,7 +17,17 @@
  */
 
 function rotateGrid(grid, n) {
-
+    for (let layer = 0; layer < Math.floor((n + 1) / 2); layer++) {
+        for (let i = 0; i < (n - (layer * 2) - 1); i++) {
+            const row_indices = [layer, layer + i, n - layer - 1, n - layer - i - 1];
+            const col_indices = [layer + i, n - layer - 1, n - layer - i - 1, layer];
+            const temp = grid[row_indices[3]][col_indices[3]];
+            for (let i = row_indices.length - 1; i > 0; i--) {
+                grid[row_indices[i]][col_indices[i]] = grid[row_indices[i-1]][col_indices[i-1]];
+            }
+            grid[row_indices[0]][col_indices[0]] = temp;
+        }
+    }
 }
 
 module.exports = rotateGrid;
