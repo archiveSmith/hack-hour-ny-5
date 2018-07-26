@@ -12,8 +12,17 @@ function BinaryTree(val) {
     this.right = null;
 }
 
+// I know I need to make this recursive somehow...
 function validBST(tree) {
-
+    let leftIsTree = false;
+    let rightIsTree = false;
+    while (this.left !== null && this.value > this.left.value) { 
+        leftIsTree = true;
+    }
+    while (this.right !== null && this.value < this.right.value) {
+        rightIsTree = true;
+    }
+    return leftIsTree + rightIsTree;
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
