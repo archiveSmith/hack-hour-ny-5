@@ -13,7 +13,25 @@ function BinaryTree(val) {
 }
 
 function validBST(tree) {
-
+  if(!tree.value) return undefined;
+  let currNode = tree;
+    if(currNode.left !== null) {
+      if(currNode.left.value > currNode.value) {
+        return false;
+      } else if (currNode.left.value < currNode.value) {
+        currNode = currNode.left;
+        validBST(currNode);
+    } 
+    if (currNode.right !== null) {
+      if(currNode.value > currNode.right.value) {
+        return false;
+      } else if (currNode.value < currNode.right.value) {
+        currNode = currNode.right;
+        validBST(currNode);
+      } 
+    }
+  }
+  return true;
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
