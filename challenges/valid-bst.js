@@ -13,7 +13,24 @@ function BinaryTree(val) {
 }
 
 function validBST(tree) {
-
+    function validBSTHelper(node, max, min) {
+        if (max && node.value > max) {
+            return false;
+        }
+        if (min && node.value < min) {
+            return false;
+        }
+        let leftCheck = true;
+        let rightCheck = true;
+        if (node.left) {
+            leftCheck = validBSTHelper(node.left, node.value, min);
+        }
+        if (node.right) {
+            rightCheck = validBSTHelper(node.right, max, node.value);
+        }
+        return leftCheck && rightCheck;
+    }
+    return validBSTHelper(tree);
 }
 
 module.exports = {BinaryTree: BinaryTree, validBST: validBST};
