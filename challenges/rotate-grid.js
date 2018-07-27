@@ -3,9 +3,9 @@
  * 
  * Write a function to rotate the grid 90 degrees clockwise. 
  *
- * For example:     sampleGrid before:  [   [1, 2, 3],
- *                                          [4, 5, 6],
- *                                          [7, 8, 9]  ]
+ * For example:     sampleGrid before:  [   [1, 2, 3],   [ [([y-2][x], [y-1][x+1], [y][x+2])],
+ *                                          [4, 5, 6],     [([y-1][x-1], [y][x], [y+1][x+1])],
+ *                                          [7, 8, 9]  ]   [([y][x-2], [y+1][x-1], [y+2][x])]
  *                  
  *                  rotateGrid(sampleGrid, 3);
  *                  
@@ -15,9 +15,8 @@
  *
  * BONUS: Do this in place
  */
-
-function rotateGrid(grid, n) {
-
-}
+// let y, x
+// arr[y][x]|
+function rotateGrid(grid, n) {}
 
 module.exports = rotateGrid;

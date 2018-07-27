@@ -3,11 +3,11 @@ Hack hours are a series of algorithm problems to refine your problem solving ski
 
 ## What do I need to do to get initial setup done for Hack Hours?
 These steps should only be done once!
-- [ ] Fork this hack hour repo.  This will create a repo on Github under your account.  
-- [ ] Go to the forked version of this repo on your Github account and click the `Clone or Download` button.  Then grab the URL from that dropdown.
-- [ ] Open a terminal session and navigate to the directory where you'll be working on your hack hours.
-- [ ] Type `git clone <paste github URL>`.  This will create a hack-hour-# directory, where # is your cohort number.  `cd` to that directory.  
-- [ ] On github, navigate back to this CodesmithLLC repo and click the `Clone or Download` button.  Then grab the URL from that dropdown.
+- [done] Fork this hack hour repo.  This will create a repo on Github under your account.  
+- [done] Go to the forked version of this repo on your Github account and click the `Clone or Download` button.  Then grab the URL from that dropdown.
+- [done] Open a terminal session and navigate to the directory where you'll be working on your hack hours.
+- [done] Type `git clone <paste github URL>`.  This will create a hack-hour-# directory, where # is your cohort number.  `cd` to that directory.  
+- [done] On github, navigate back to this CodesmithLLC repo and click the `Clone or Download` button.  Then grab the URL from that dropdown.
 - [ ] Back on your terminal, type `git remote add upstream <paste CodesmithLLC github URL>`.  
 - [ ] Verify that you have aliases for origin and upstream by typing `git remote -v`
 - [ ] These aliases should look something like this:

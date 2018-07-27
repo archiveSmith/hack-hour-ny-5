@@ -9,7 +9,11 @@
  */
 
 function subsetSum(array, target) {
+  // let arrayCopy = array.slice();
+  let startPoint = 0;
 
+  while (startPoint !== target) {}
 }
+subsetSum([3, 7, 4, 2], 5);
 
 module.exports = subsetSum;
