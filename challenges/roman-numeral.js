@@ -18,7 +18,7 @@
  */
 
 function romanNumeral(n) {
-    if(!n || typeof n !== 'number') return undefined;
+    //if(!n || typeof n !== 'number') return undefined;
     const numsChart = {
       0: '',
       1: 'I',
