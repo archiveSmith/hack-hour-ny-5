@@ -17,8 +17,40 @@ function Node(val) {
   this.next = null;
 }
 
-function addLinkedList(l1, l2) {
+function addLinkedList(l1, l2, carryover) {
+  //check if there is any values to be added to list, if not return null
+  if (!l1 && !l2 && !carryover) return null;
 
+  //initialize sum to the carryover or 0
+  let sum = carryover || 0;
+
+  //if l1 exists, add value to sum
+  if (l1) sum += l1.value;
+
+  //if l2 exists, add value to sum
+  if (l2) sum += l2.value;
+
+  //set result to a new node with the sum
+  const result = new Node(sum % 10);
+
+  //if l1 or l2 exists, set the rest of the list to a recursive call
+  if (l1 || l2) {
+    const rest = addLinkedList(l1 ? l1.next : null, l2 ? l2.next : null, sum >= 10 ? 1 : 0);
+
+    //set next in the result to the rest
+    result.next = rest;
+  }
+  return result;
 }
 
-module.exports = {Node: Node, addLinkedList: addLinkedList};
+const l1 = new Node(2);
+l1.next = new Node(1);
+l1.next.next = new Node(5);
+
+const l2 = new Node(5);
+l2.next = new Node(9);
+l2.next.next = new Node(2);
+
+console.log(addLinkedList(l1, l2));
+
+module.exports = { Node: Node, addLinkedList: addLinkedList };
