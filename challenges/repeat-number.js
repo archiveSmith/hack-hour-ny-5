@@ -11,11 +11,10 @@
  */
 
 function repeatNumbers(array) {
-    let ans = array[0];
-    for (let i = 1; i < array.length; i++) {
-        ans ^= array[i];
-    }
-    return ans;
+    let total = (array.length - 1) * (array.length) / 2;
+    return array.reduce((acc, cur) => acc + cur, 0) - total;
 }
+
+console.log(repeatNumbers([1,2,3,4,4]));
 
 module.exports = repeatNumbers;
