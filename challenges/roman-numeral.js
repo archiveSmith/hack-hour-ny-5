@@ -18,7 +18,21 @@
  */
 
 function romanNumeral(n) {
+  const conversions = {
+    1: 'I',
+    5: 'V',
+    10: 'X',
+    50: 'L',
+    100: 'C',
+    500: 'D',
+    1000: 'M'
+  };
 
+  if (conversions[n]) return conversions[n];
+
+  let numString = n.toString();
+  let length = numString.length;
+  let result = 0;
 }
 
 module.exports = romanNumeral;
