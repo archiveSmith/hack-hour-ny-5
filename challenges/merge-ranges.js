@@ -11,7 +11,24 @@
 
 
 function mergeRanges(array) {
-
+    let mergedRanges = [];
+    for (let i = 0; i < array.length; i++) {
+        let newMergedRanges = [];
+        let curRange = array[i].slice();
+        for (let j = 0; j < mergedRanges.length; j++) {
+            if (mergedRanges[j][1] < curRange[0] || curRange[1] < mergedRanges[j][0]) {
+                newMergedRanges.push(mergedRanges[j]);
+            }
+            else {
+                const minRange = Math.min(curRange[0], mergedRanges[j][0]);
+                const maxRange = Math.max(curRange[1], mergedRanges[j][1]);
+                curRange = [minRange, maxRange];
+            }
+        }
+        newMergedRanges.push(curRange);
+        mergedRanges = newMergedRanges;
+    }
+    return mergedRanges;
 }
 
 module.exports = mergeRanges;
