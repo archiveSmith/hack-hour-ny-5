@@ -33,7 +33,25 @@ var Node = function(value) {
 }
 
 function hasCycle(head) {
-
+  if ((! head) || (! head.next) || (! head.next.next)) {
+    return false;
+  }
+  let slowNode = head.next;
+  let fastNode = head.next.next;
+  while (slowNode && fastNode) {
+    if (slowNode === fastNode) {
+      return true;
+    }
+    slowNode = slowNode.next;
+    fastNode = fastNode.next;
+    if (fastNode) {
+      fastNode = fastNode.next;
+    }
+    else {
+      return false;
+    }
+  }
+  return false;
 }
 
 module.exports = {Node: Node, hasCycle: hasCycle}
