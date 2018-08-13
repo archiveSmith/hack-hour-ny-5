@@ -15,7 +15,7 @@ function sumMultiples3Or5Below1000() {
 function sumMultiplesXOrYBelowZ(x, y, z) {
   function calcSumForNum(a, b) {
     const times = Math.ceil(b / a) - 1;
-    return times * (times + 1) / 2;
+    return a * times * (times + 1) / 2;
   }
   return calcSumForNum(x, z) + calcSumForNum(y, z) - calcSumForNum(x * y, z);
 }
