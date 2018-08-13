@@ -20,8 +20,6 @@ function sumMultiplesXOrYBelowZ(x, y, z) {
   return calcSumForNum(x, z) + calcSumForNum(y, z) - calcSumForNum(x * y, z);
 }
 
-console.log(sumMultiples3Or5Below1000());
-
 const objectToExport = {
   sumMultiples3Or5Below1000,
   sumMultiplesXOrYBelowZ,
