@@ -14,7 +14,7 @@
 
 function anagrams(string) {
   if (string.length === 0) {
-    return [];
+    return [''];
   }
   if (string.length === 1) {
     return [string];
