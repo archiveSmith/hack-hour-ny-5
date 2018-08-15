@@ -7,8 +7,18 @@
  *
  */
 
+// NOT FINISHED
 function maxSubarray(arr) {
+  const { length } = arr;
+  let max = 0;
 
+  for (let i = 0; i < length; i++) {
+    const sum = arr[i];
+
+    if (max < sum) {
+      max = sum;
+    }
+  }
 }
 
 module.exports = maxSubarray;
