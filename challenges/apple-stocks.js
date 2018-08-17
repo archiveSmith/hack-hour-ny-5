@@ -13,7 +13,19 @@
  */
 
 function bestProfit(stock_prices_yesterday) {
+  let min = stock_prices_yesterday[0];
+  let maxProfit = 0;
 
+  stock_prices_yesterday.forEach(curr => {
+    if (min > curr) min = curr;
+    const profit = curr - min;
+    if (maxProfit < profit) maxProfit = profit;
+  });
+
+  return maxProfit;
 }
+
+console.log(bestProfit([9, 10, 2, 4]));
+console.log(bestProfit([2, 10, 8, 9]));
 
 module.exports = bestProfit;

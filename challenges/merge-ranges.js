@@ -9,9 +9,6 @@
  * Do not assume the ranges are in order
  */
 
-
-function mergeRanges(array) {
-
-}
+function mergeRanges(array) {}
 
 module.exports = mergeRanges;
