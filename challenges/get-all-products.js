@@ -10,7 +10,8 @@
  */
 
 function getAllProducts(array) {
-
+    const totalProd = array.reduce((acc, cur) => acc * cur);
+    return array.map(x => totalProd / x);
 }
 
 module.exports = getAllProducts;
