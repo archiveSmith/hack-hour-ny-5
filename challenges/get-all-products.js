@@ -10,8 +10,32 @@
  */
 
 function getAllProducts(array) {
-    const totalProd = array.reduce((acc, cur) => acc * cur);
-    return array.map(x => totalProd / x);
+    if (array.length === 0) {
+        return [0];
+    }
+    let numZeros = 0;
+    let totalProd = 1;
+    let totalProdNoZeros = 1;
+    for (let i = 0; i < array.length; i++) {
+        totalProd *= array[i];
+        if (array[i] === 0) {
+            numZeros++;
+        }
+        else {
+            totalProdNoZeros *= array[i];
+        }
+    }
+    return array.map(x => {
+        if (x !== 0) {
+            return totalProd / x;
+        }
+        else if (numZeros > 1) {
+            return 0;
+        }
+        else {
+            return totalProdNoZeros;
+        }
+    });
 }
 
 module.exports = getAllProducts;
