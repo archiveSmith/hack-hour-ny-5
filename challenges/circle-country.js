@@ -23,7 +23,28 @@
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
-
+    function isPointWithinCircle(pointX, pointY, centerX, centerY, radius) {
+        if (Math.sqrt(Math.pow(pointX - centerX, 2) + Math.pow(pointY - centerY, 2)) < r) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    let bordersCrossed = 0;
+    for (let i = 0; i < x.length; i++) {
+        let countIfWithinCircle = 0;
+        if (isPointWithinCircle(start_x, start_y, x[i], y[i], r[i])) {
+            countIfWithinCircle++;
+        }
+        if (isPointWithinCircle(end_x, end_y, x[i], y[i], r[i])) {
+            countIfWithinCircle++;
+        }
+        if (countIfWithinCircle === 1) {
+            bordersCrossed++;
+        }
+    }
+    return bordersCrossed;
 }
 
 module.exports = circleCountry;
