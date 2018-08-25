@@ -24,7 +24,7 @@
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
     function isPointWithinCircle(pointX, pointY, centerX, centerY, radius) {
-        if (Math.sqrt(Math.pow(pointX - centerX, 2) + Math.pow(pointY - centerY, 2)) < r) {
+        if (Math.sqrt(Math.pow(pointX - centerX, 2) + Math.pow(pointY - centerY, 2)) < radius) {
             return true;
         }
         else {
