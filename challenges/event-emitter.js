@@ -43,7 +43,7 @@ EventEmitter.prototype.on = function(funcName, func) {
 // "triggers" the func 
 EventEmitter.prototype.trigger = function(funcName, ...args) {
     for (let i = 0; i < this.listenerArray.length; i++) {
-        this.listenerArray[i](args[i]);
+        this.listenerArray[i](...args);
     }
 };
 
