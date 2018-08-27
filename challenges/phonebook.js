@@ -41,7 +41,7 @@ jazbook = [
        ['david','301-844-0978'],
        ['travis','301-844-8505'],
        ['jasmine','1800-974-4539']
-    ];
+];
 
 // console.log(findName(jazbook, 'jasmine'));
 
