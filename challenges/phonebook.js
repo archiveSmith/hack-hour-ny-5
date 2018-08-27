@@ -43,13 +43,22 @@ jazbook = [
        ['jasmine','1800-974-4539']
     ];
 
-console.log(findName(jazbook, 'jasmine'));
+// console.log(findName(jazbook, 'jasmine'));
 
 
 // return an object literal representing the jazbook
 function makePhoneBookObject(jazbook){
-
+  let returnObj = {};
+  for (let i = 0; i < jazbook.length; i++) {
+    returnObj[jazbook[i][0]] = jazbook[i][1];
+    // if (jazbook[i][0] === name) {
+    //   return jazbook[i][1];
+    // }
+  }
+  return returnObj;
 }
+
+console.log(makePhoneBookObject(jazbook));
 
 const objectToExport = {
   findName,
