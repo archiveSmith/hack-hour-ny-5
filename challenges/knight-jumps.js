@@ -11,7 +11,18 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
-
+    const row = Number(str.charAt(1));
+    const col = Number(str.charAt(3));
+    const rowMovements = [row - 2, row - 2, row - 1, row - 1, row + 1, row + 1, row + 2, row + 2];
+    const colMovements = [col - 1, col + 1, col - 2, col + 2, col - 2, col + 2, col - 1, col + 1];
+    let timesKnightCanJump = 0;
+    for (let i = 0; i < rowMovements.length; i++) {
+        if (rowMovements[i] > 0 && rowMovements[i] <= 8 && colMovements[i] > 0 && colMovements[i] <= 8) {
+            timesKnightCanJump++;
+        }
+    }
+    return timesKnightCanJump;
 }
+
 
 module.exports = knightjumps;
