@@ -24,8 +24,10 @@
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
   return r.reduce((accum, rad, i) => {
-    const startDistance = Math.sqrt((x[i] - start_x) ** 2 + (y[i] - start_y) ** 2);
-    const endDistance = Math.sqrt((x[i] - end_x) ** 2 + (y[i] - end_y) ** 2);
+    const curr_x = x[i];
+    const curr_y = y[i];
+    const startDistance = Math.sqrt((curr_x - start_x) ** 2 + (curr_y - start_y) ** 2);
+    const endDistance = Math.sqrt((curr_x - end_x) ** 2 + (curr_y - end_y) ** 2);
 
     return (startDistance < rad && endDistance > rad) || (startDistance > rad && endDistance < rad)
       ? accum++
