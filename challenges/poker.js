@@ -20,7 +20,31 @@
  * BONUS2: Create a deck of cards function that generates two random hands for you.
  */
 function poker(hand1, hand2) {
+  const handObj1 = {};
 
+  for (let i = 0; i < 5; i++) {
+    const card1 = hand1[i];
+
+    if (!handObj1[card1]) handObj1[card1] = 0;
+
+    handObj1[card1] += 1;
+  }
+}
+
+function getPokerHand(hand) {
+  const cards = Object.keys(hand).sort();
+  const count = Object.values(hand);
+
+  // '4-of-a-kind'
+  if (count.includes(4)) return 1000;
+  // 'full-house'
+  if (count.includes(3) && count.includes(2)) return 800;
+  // 'straight'
+  for (let i = 0; i < 5; i++) {}
+  // '3-of-a-kind'
+  if (count.includes(3) && !count.includes(2)) return 400;
+  // '2-pair'
+  if (count.includes(2)) return 200;
 }
 
 module.exports = poker;

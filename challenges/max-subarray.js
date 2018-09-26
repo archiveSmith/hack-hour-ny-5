@@ -8,7 +8,17 @@
  */
 
 function maxSubarray(arr) {
+  var currentMax = -Infinity;
+  var finalMax = -Infinity;
 
+  for (var i = 0; i < arr.length; i++) {
+    // which is greater: arr[i] or the sum of a subarray ending in arr[i]?
+    currentMax = Math.max(arr[i], currentMax + arr[i]);
+
+    // which is greater: currentMax or the previous max?
+    finalMax = Math.max(finalMax, currentMax);
+  }
+  return finalMax;
 }
 
 module.exports = maxSubarray;

@@ -11,7 +11,33 @@
 // var str = "(4 5)"
 
 function knightjumps(str) {
+  let x = +str[1];
+  let y = +str[3];
+  let moves = 0;
 
+  // check BOTH moves going LEFT 1:
+  if (x - 1 >= 1) {
+    if (y - 2 > 0) moves++;
+    if (y + 2 < 9) moves++;
+  }
+  // check BOTH moves going LEFT 2:
+  if (x - 2 >= 1) {
+    if (y - 1 > 0) moves++;
+    if (y + 1 < 9) moves++;
+  }
+  // check BOTH moves going RIGHT 1:
+  if (x + 1 <= 8) {
+    if (y - 2 > 0) moves++;
+    if (y + 2 < 9) moves++;
+  }
+  // check BOTH moves going RIGHT 2:
+  if (x + 2 <= 8) {
+    if (y - 1 > 0) moves++;
+    if (y + 1 < 9) moves++;
+  }
+  return moves;
 }
+
+console.log(knightjumps('(4 5)'));
 
 module.exports = knightjumps;

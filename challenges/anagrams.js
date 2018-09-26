@@ -7,13 +7,24 @@
  */
 
 /**
-  * example:
-  * var result = anagrams('abc');
-  * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
-  */
+ * example:
+ * var result = anagrams('abc');
+ * console.log(result); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
+ */
 
-function anagrams(string) {
+function anagrams(str) {
+  if (str.length <= 1) return [str];
 
+  const first = str[0];
+  const rest = str.slice(1);
+
+  return anagrams(rest).reduce(
+    (accum, perm) =>
+      accum.concat(str.split('').map((char, i) => perm.slice(0, i) + first + perm.slice(i))),
+    []
+  );
 }
+
+console.log(anagrams('abcd'));
 
 module.exports = anagrams;

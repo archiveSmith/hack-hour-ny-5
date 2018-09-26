@@ -10,10 +10,25 @@
  * How would you solve this problem if a temporary buffer is not allowed?
  */
 
-
-
 function deleteDups(head) {
+  const cache = {};
 
+  let current = head;
+  let prev = null;
+
+  while (current) {
+    const { value } = current;
+
+    if (cache[value]) {
+      prev.next = current.next;
+      current.next = null;
+    } else {
+      cache[value] = true;
+    }
+
+    prev = current;
+    current = current.next;
+  }
 }
 
 module.exports = deleteDups;
