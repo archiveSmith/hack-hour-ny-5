@@ -23,7 +23,7 @@
     "request": "^2.65.0",
     "sendgrid": "^3.0.8",
     "config": "^1.30.0",
-    "@sengrid/mail": "^6.2.1"
+    "@sendgrid/mail": "^6.2.1"
   },
   "repository": {
     "type": "git",
