@@ -69,7 +69,7 @@ function addLinkedList(l1, l2) {
 //   }
 //   return result;
 // }
-
+ 
 const l1 = new Node(2);
 l1.next = new Node(1);
 l1.next.next = new Node(5);
