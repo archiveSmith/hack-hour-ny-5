@@ -25,6 +25,10 @@ function fizzbuzz(num) {
     if (i % 5 === 0) str += 'buzz';
     output.push(str || i);
   }
+
+  return output;
 }
+
+console.log(fizzbuzz(16));
 
 module.exports = fizzbuzz;
