@@ -31,4 +31,34 @@ function deleteDups(head) {
   }
 }
 
+// function deleteDups(head) {
+//   let outer = head;
+
+//   while (outer) {
+//     let inner = outer;
+
+//     while (inner.next) {
+//       if (inner.next.value === outer.value) {
+//         inner.next = inner.next.next;
+//       } else {
+//         inner = inner.next;
+//       }
+//     }
+
+//     outer = outer.next;
+//   }
+// }
+
+// function Node(val) {
+//   this.value = val;
+//   this.next = null;
+// }
+
+// const node = new Node(3);
+// node.next = new Node(2);
+// node.next.next = new Node(1);
+// node.next.next.next = new Node(3);
+// deleteDups(node)
+// console.log(node);
+
 module.exports = deleteDups;

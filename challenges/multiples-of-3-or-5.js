@@ -5,18 +5,21 @@
 // write a function that will find the sum of all the multiples of 3 or 5
 // below 1000 and return that sum.
 
-// function sumMultiples3Or5Below1000() {
-//   let sum = 0;
 
-//   for (let i = 1; i < 1000; i++) {
-//     if (i % 3 === 0 || i % 5 === 0) {
-//       sum += i;
-//     }
-//   }
+// O(n)
+function sumMultiples3Or5Below1000() {
+  let sum = 0;
 
-//   return sum;
-// }
+  for (let i = 1; i < 1000; i++) {
+    if (i % 3 === 0 || i % 5 === 0) {
+      sum += i;
+    }
+  }
 
+  return sum;
+}
+
+// O(1)
 function sumMultiples3Or5Below1000() {
   const greatestMultiple3Below1000 = 999 - (999 % 3);
   const sumOfMultiples3Below1000 = greatestMultiple3Below1000 * (greatestMultiple3Below1000 + 3) / (2 * 3);
@@ -34,18 +37,21 @@ console.log(sumMultiples3Or5Below1000());
 
 // extension make it dynamic function that takes input x,y,z
 // and returns the sum of multiples of x and y below z
-// function sumMultiplesXOrYBelowZ(x, y, z) {
-//   let sum = 0;
 
-//   for (let i = 1; i < z; i++) {
-//     if (i % x === 0 || i % y === 0) {
-//       sum += i;
-//     }
-//   }
+// O(n)
+function sumMultiplesXOrYBelowZ(x, y, z) {
+  let sum = 0;
 
-//   return sum;
-// }
+  for (let i = 1; i < z; i++) {
+    if (i % x === 0 || i % y === 0) {
+      sum += i;
+    }
+  }
 
+  return sum;
+}
+
+// O(1)
 function sumMultiplesXOrYBelowZ(x, y, z) {
   const greatestMultipleXBelowZ = (z - 1) - ((z - 1) % x);
   const sumOfMultiplesXBelowZ = greatestMultipleXBelowZ * (greatestMultipleXBelowZ + x) / (2 * x);
