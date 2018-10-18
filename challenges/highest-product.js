@@ -5,7 +5,7 @@
 function highestProduct(array) {
   if (!Array.isArray(array) || array.length < 3) return 0;
 
-  array.sort((a, b) => a > b);
+  array.sort((a, b) => a - b);
 
   const { length } = array;
   const productOfThreeLargest = array[length - 1] * array[length - 2] * array[length - 3];

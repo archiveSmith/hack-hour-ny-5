@@ -18,36 +18,47 @@
  */
 
 function newIntersections(x, y) {
-  // Get all vertical lines and their max/min
-  const exes = x.reduce((accum, xCoord, index) => {
-    if (!accum[xCoord]) accum[xCoord] = { max: y[index], min: y[index] };
-    accum[xCoord].max = Math.max(accum[xCoord].max, y[index]);
-    accum[xCoord].min = Math.min(accum[xCoord].min, y[index]);
-    return accum;
-  }, {});
+  const { length } = x;
+  const exes = {};
+  const whys = {};
+  let counter = 0;
 
-  // Get all horizontal lines and their max/min
-  const whys = y.reduce((accum, yCoord, index) => {
-    if (!accum[yCoord]) accum[yCoord] = { max: x[index], min: x[index] };
-    accum[yCoord].max = Math.max(accum[yCoord].max, x[index]);
-    accum[yCoord].min = Math.min(accum[yCoord].min, x[index]);
-    return accum;
-  }, {});
+  for (let i = 0; i < length; i++) {
+    const ex = x[i];
+    const why = y[i];
 
-  // Count # of intersections
-  let intersections = 0;
-  for (let xCoord in exes) {
-    for (let yCoord in whys) {
-      if (
-        exes[xCoord].max > yCoord &&
-        yCoord > exes[xCoord].min &&
-        whys[yCoord].max > xCoord &&
-        xCoord > whys[yCoord].min
-      )
-        intersections++;
+    if (exes[ex] === undefined) {
+      exes[ex] = {
+        smallest: why,
+        largest: why
+      }
+    } else {
+      exes[ex].smallest = Math.min(exes[ex].smallest, why);
+      exes[ex].largest = Math.max(exes[ex].largest, why);
+    }
+
+    if (whys[why] === undefined) {
+      whys[why] = {
+        smallest: ex,
+        largest: ex
+      }
+    } else {
+      whys[why].smallest = Math.min(whys[why].smallest, ex);
+      whys[why].largest = Math.max(whys[why].largest, ex);
     }
   }
-  return intersections;
+
+  for (ex in exes) {
+    const { smallest, largest } = exes[ex];
+
+    for (let i = smallest + 1; i < largest; i++) {
+      if (whys[i] && whys[i].smallest < ex && whys[i].largest > ex) {
+        counter++;
+      }
+    }
+  }
+
+  return counter;
 }
 
 console.log(newIntersections([0, 1, 2, 2, 3], [2, 3, 3, 1, 2]));
