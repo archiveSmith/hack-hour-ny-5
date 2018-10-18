@@ -10,55 +10,38 @@
  * How would you solve this problem if a temporary buffer is not allowed?
  */
 
-function deleteDups(head) {
-  const cache = {};
-
-  let current = head;
-  let prev = null;
-
-  while (current) {
-    const { value } = current;
-
-    if (cache[value]) {
-      prev.next = current.next;
-      current.next = null;
-    } else {
-      cache[value] = true;
-    }
-
-    prev = current;
-    current = current.next;
-  }
-}
-
+// Hashing/Object
 // function deleteDups(head) {
-//   let outer = head;
-
-//   while (outer) {
-//     let inner = outer;
-
-//     while (inner.next) {
-//       if (inner.next.value === outer.value) {
-//         inner.next = inner.next.next;
-//       } else {
-//         inner = inner.next;
-//       }
+//   var data = {};
+//   var prev;
+//   for (var curr = head; curr; curr = curr.next) {
+//     if (curr.value in data) {
+//       prev.next = curr.next;
+//     } else {
+//       data[curr.value] = true;
+//       prev = curr;
 //     }
-
-//     outer = outer.next;
 //   }
 // }
 
-// function Node(val) {
-//   this.value = val;
-//   this.next = null;
-// }
 
-// const node = new Node(3);
-// node.next = new Node(2);
-// node.next.next = new Node(1);
-// node.next.next.next = new Node(3);
-// deleteDups(node)
-// console.log(node);
+// Nested loops
+function deleteDups(head) {
+  let outer = head;
+
+  while (outer) {
+    let inner = outer;
+
+    while (inner.next) {
+      if (inner.next.value === outer.value) {
+        inner.next = inner.next.next;
+      } else {
+        inner = inner.next;
+      }
+    }
+
+    outer = outer.next;
+  }
+}
 
 module.exports = deleteDups;

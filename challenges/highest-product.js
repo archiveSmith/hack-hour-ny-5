@@ -3,21 +3,18 @@
  */
 
 function highestProduct(array) {
-  let maxArray = [array[0], array[0], array[0]];
-  let minArray = [array[0], array[0], array[0]];
+  array.sort((a, b) => a > b);
 
-  array.forEach(num => {
-    if (maxArray[2] < num) maxArray[2] = num;
-    if (minArray[2] > num) minArray[2] = num;
-    maxArray = maxArray.sort((a, b) => a < b);
-    minArray = minArray.sort((a, b) => a > b);
-  });
-  console.log(maxArray, minArray);
+  const { length } = array;
+  const productOfThreeLargest = array[length - 1] * array[length - 2] * array[length - 3];
+  const productOfTwoSmallestAndLargest = array[0] * array[1] * array[length - 1];
+
+  return Math.max(productOfThreeLargest, productOfTwoSmallestAndLargest);
 }
 
 module.exports = highestProduct;
 
-console.log(highestProduct([1, 2, 3]));
+console.log(highestProduct([3, -7, 5, 90, -30]));
 console.log(highestProduct([1, 2, 3, 4]));
 console.log(highestProduct([1, 2, 3, 4, 5]));
 console.log(highestProduct([-5, -4, -3, -2, -1, 0, 1, 2, 3, 4]));

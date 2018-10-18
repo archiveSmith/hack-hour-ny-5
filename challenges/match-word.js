@@ -3,7 +3,7 @@
 //takes a string and returns true if every word is closed by its backwards counterpart. Words must be separated by space or
 //punctuation.
 
-// matchWord('__END_DNE-----');  -> true
+// matchWord('__END______DNE-----');  -> true
 // matchWord('__ENDDNE__');  -> false       (not separated by a space)
 // matchWord('IF()()fi[]');  -> true        (should be case-insensitive)
 // matchWord('for__if__rof__fi');  -> false     not properly closed. like ( [) ]
@@ -16,21 +16,17 @@ function matchWord(str) {
   const stack = [];
   const words = str
     .toLowerCase()
-    .replace(/[^a-z]/g, ' ')
+    .replace(/[^a-z0-9]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
     .split(' ');
 
   for (let word of words) {
     const lastItemInStack = stack[stack.length - 1];
-    const reversedWord = word
-      .split('')
-      .reverse()
-      .join('');
+    const reversedWord = word.split('').reverse().join('');
 
-    if (stack.includes(reversedWord)) {
-      if (reversedWord !== lastItemInStack) return false;
-      else stack.pop();
+    if (lastItemInStack === reversedWord) {
+      stack.splice(stack.length - 1, 1);
     } else {
       stack.push(word);
     }
@@ -38,6 +34,32 @@ function matchWord(str) {
 
   return stack.length === 0;
 }
+
+// function matchWord(str) {
+//   const stack = [];
+//   let word = '';
+
+//   for (let i = 0; i <= str.length; i++) {
+//     const char = str[i];
+
+//     if (char && char.match(/[A-Za-z0-9]/)) {
+//       word += char.toLowerCase();
+//     } else if (word.length > 0) {
+//       const reversedWord = word.split('').reverse().join('');
+//       const lastItemInStack = stack[stack.length - 1];
+
+//       if (lastItemInStack === reversedWord) {
+//         stack.splice(stack.length - 1, 1);
+//       } else {
+//         stack.push(word);
+//       }
+
+//       word = '';
+//     }
+//   }
+
+//   return stack.length === 0;
+// }
 
 console.log(matchWord('__END_DNE-----'));
 console.log(matchWord('__ENDDNE__'));
