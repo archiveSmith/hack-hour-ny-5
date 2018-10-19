@@ -17,23 +17,23 @@ function knightjumps(str) {
 
   // check BOTH moves going LEFT 1:
   if (x - 1 >= 1) {
-    if (y - 2 > 0) moves++;
-    if (y + 2 < 9) moves++;
+    if (y - 2 >= 1) moves++;
+    if (y + 2 <= 8) moves++;
   }
   // check BOTH moves going LEFT 2:
   if (x - 2 >= 1) {
-    if (y - 1 > 0) moves++;
-    if (y + 1 < 9) moves++;
+    if (y - 1 >= 1) moves++;
+    if (y + 1 <= 8) moves++;
   }
   // check BOTH moves going RIGHT 1:
   if (x + 1 <= 8) {
-    if (y - 2 > 0) moves++;
-    if (y + 2 < 9) moves++;
+    if (y - 2 >= 1) moves++;
+    if (y + 2 <= 8) moves++;
   }
   // check BOTH moves going RIGHT 2:
   if (x + 2 <= 8) {
-    if (y - 1 > 0) moves++;
-    if (y + 1 < 9) moves++;
+    if (y - 1 >= 1) moves++;
+    if (y + 1 <= 8) moves++;
   }
   return moves;
 }
