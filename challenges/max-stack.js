@@ -12,18 +12,14 @@ function Stack() {
   this.length = 0;
 }
 
-Stack.prototype.push = function(item) {
-  const index = this.length;
-  this.items[index] = item;
-  this.length += 1;
+Stack.prototype.push = function (item) {
+  this.items[this.length++] = item;
   if (this.max < item || this.max === undefined) this.max = item;
   return this.length;
 };
 
-Stack.prototype.pop = function() {
-  const item = this.items[this.length - 1];
-  this.length -= 1;
-
+Stack.prototype.pop = function () {
+  const item = this.items[--this.length];
   if (this.length === 0) this.max = undefined;
   else if (this.max === item) {
     for (let i = 0; i < this.length; i++) {
@@ -34,7 +30,7 @@ Stack.prototype.pop = function() {
   return item;
 };
 
-Stack.prototype.getMax = function() {
+Stack.prototype.getMax = function () {
   return this.max;
 };
 
