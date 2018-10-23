@@ -19,19 +19,38 @@ Stack.prototype.push = function (item) {
 };
 
 Stack.prototype.pop = function () {
-  const item = this.items[--this.length];
+  const items = this.items.splice(--this.length, 1);
   if (this.length === 0) this.max = undefined;
-  else if (this.max === item) {
-    for (let i = 0; i < this.length; i++) {
+  else if (this.max === items[0]) {
+    this.max = this.items[0];
+
+    for (let i = 1; i < this.length; i++) {
       if (this.max < this.items[i]) this.max = this.items[i];
     }
   }
 
-  return item;
+  return items[0];
 };
 
 Stack.prototype.getMax = function () {
   return this.max;
 };
+
+const stack = new Stack();
+console.log(stack);
+stack.push(1);
+console.log(stack);
+stack.push(2);
+console.log(stack);
+stack.push(3);
+console.log(stack);
+stack.push(4);
+console.log(stack);
+stack.push(0);
+console.log(stack);
+stack.pop();
+console.log(stack);
+stack.pop();
+console.log(stack);
 
 module.exports = Stack;
