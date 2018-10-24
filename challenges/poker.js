@@ -20,31 +20,85 @@
  * BONUS2: Create a deck of cards function that generates two random hands for you.
  */
 function poker(hand1, hand2) {
-  const handObj1 = {};
+  const value1 = calculatePokerHandValue(hand1);
+  const value2 = calculatePokerHandValue(hand2);
+
+  if (value1 > value2) return 'Player 1 wins';
+  if (value1 < value2) return 'Player 2 wins';
+  return 'Draw';
+}
+
+function calculatePokerHandValue(hand) {
+  return Math.max(...hand) + calculatePokerRankValue(hand);
+}
+
+function calculatePokerRankValue(hand) {
+  const cardCount = getCardCount(hand);
+
+  if (isFourOfAKind(cardCount)) return 10 ** 7;
+  if (isFullHouse(cardCount)) return 10 ** 6;
+  if (isStraight(cardCount)) return 10 ** 5;
+  if (isThreeOfAKind(cardCount)) return 10 ** 4;
+  if (isTwoPair(cardCount)) return 10 ** 3;
+  if (isOnePair(cardCount)) return 10 ** 2;
+  return 0;
+}
+
+function getCardCount(hand) {
+  const cache = {};
 
   for (let i = 0; i < 5; i++) {
-    const card1 = hand1[i];
-
-    if (!handObj1[card1]) handObj1[card1] = 0;
-
-    handObj1[card1] += 1;
+    const card = hand[i];
+    if (cache[card] === undefined) cache[card] = 0;
+    cache[card] += 1;
   }
+
+  return cache;
 }
 
-function getPokerHand(hand) {
-  const cards = Object.keys(hand).sort();
-  const count = Object.values(hand);
-
-  // '4-of-a-kind'
-  if (count.includes(4)) return 1000;
-  // 'full-house'
-  if (count.includes(3) && count.includes(2)) return 800;
-  // 'straight'
-  for (let i = 0; i < 5; i++) {}
-  // '3-of-a-kind'
-  if (count.includes(3) && !count.includes(2)) return 400;
-  // '2-pair'
-  if (count.includes(2)) return 200;
+function isFourOfAKind(handCount) {
+  return Object.values(handCount).includes(4);
 }
+
+function isFullHouse(handCount) {
+  const counts = Object.values(handCount);
+
+  return counts.includes(2) && counts.includes(3);
+}
+
+function isStraight(handCount) {
+  const cards = Object.keys(handCount);
+
+  if (cards.length < 5) return false;
+
+  cards.sort(() => -1);
+
+  for (let i = 0; i < 4; i++) {
+    if (parseInt(cards[i]) !== parseInt(cards[i + 1]) - 1) return false;
+  }
+
+  return true;
+}
+
+function isThreeOfAKind(handCount) {
+  const counts = Object.values(handCount);
+
+  return counts.includes(3) && !counts.includes(2);
+}
+
+function isTwoPair(handCount) {
+  return Object.values(handCount).filter((count) => count === 2).length === 2;
+}
+
+function isOnePair(handCount) {
+  const counts = Object.values(handCount);
+
+  return counts.includes(2) && counts.filter(count => count === 1).length === 3;
+}
+
+const hand1 = [5, 5, 3, 4, 5];
+const hand2 = [2, 2, 2, 5, 5];
+
+console.log(poker(hand1, hand2));
 
 module.exports = poker;
