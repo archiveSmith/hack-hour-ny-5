@@ -96,9 +96,4 @@ function isOnePair(handCount) {
   return counts.includes(2) && counts.filter(count => count === 1).length === 3;
 }
 
-const hand1 = [5, 5, 3, 4, 5];
-const hand2 = [2, 2, 2, 5, 5];
-
-console.log(poker(hand1, hand2));
-
 module.exports = poker;
