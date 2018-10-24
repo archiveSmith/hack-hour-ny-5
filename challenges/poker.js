@@ -71,7 +71,7 @@ function isStraight(handCount) {
 
   if (cards.length < 5) return false;
 
-  cards.sort(() => -1);
+  cards.sort();
 
   for (let i = 0; i < 4; i++) {
     if (parseInt(cards[i]) !== parseInt(cards[i + 1]) - 1) return false;
@@ -96,4 +96,4 @@ function isOnePair(handCount) {
   return counts.includes(2) && counts.filter(count => count === 1).length === 3;
 }
 
-module.exports = poker;
+module.exports = { poker, calculatePokerHandValue, calculatePokerRankValue, getCardCount, isFourOfAKind, isFullHouse, isOnePair, isStraight, isThreeOfAKind, isTwoPair };
