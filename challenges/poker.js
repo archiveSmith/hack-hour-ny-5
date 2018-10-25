@@ -96,4 +96,4 @@ function isOnePair(handCount) {
   return counts.includes(2) && counts.filter(count => count === 1).length === 3;
 }
 
-module.exports = { poker, calculatePokerHandValue, calculatePokerRankValue, getCardCount, isFourOfAKind, isFullHouse, isOnePair, isStraight, isThreeOfAKind, isTwoPair };
+module.exports = poker;
