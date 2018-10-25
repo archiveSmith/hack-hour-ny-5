@@ -24,7 +24,7 @@ function bestProfit(stock_prices_yesterday) {
     if (currentPrice < lowestPrice) {
       lowestPrice = currentPrice;
     } else if (currentPrice - lowestPrice > maxProfit) {
-      maxProfit = profit;
+      maxProfit = currentPrice - lowestPrice;
     }
   }
 
