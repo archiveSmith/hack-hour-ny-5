@@ -40,7 +40,96 @@
 // - if any part of the date string is missing then you can consider it an invalid date
 
 function parseDates(str) {
-  
+    const months = {
+        'Jan': 0,
+        'Feb': 1,
+        'Mar': 2,
+        'Apr': 3,
+        'May': 4,
+        'Jun': 5,
+        'Jul': 6,
+        'Aug': 7,
+        'Sep': 8,
+        'Oct': 9,
+        'Nov': 10,
+        'Dec': 11
+    }
+
+    const days = {
+        'Sunday': 0,
+        'Monday': 1,
+        'Tuesday': 2,
+        'Wednesday': 3,
+        'Thursday': 4,
+        'Friday': 5,
+        'Saturday': 6
+    }
+
+    const dateObj = new Date();
+    let year = dateObj.getFullYear();
+    let month;
+    let date;
+    let hour;
+    let minute;
+
+    const sections = str.split(' ');
+
+    if (sections.length === 3) {
+        [year, month, date] = getYearMonthDate(sections[0], dateObj);
+        [hour, minute] = getTime(sections[1], sections[2]);
+    }
+
+    if (sections.length === 4) {
+        month = getMonth(sections[0]);
+        date = getDay(sections[1]);
+        [hour, minute] = getTime(sections[2], sections[3]);
+    }
+
+    return new Date(year, month, date, hour, minute);
+
+    function getYearMonthDate(day, dateObj) {
+        if (day === 'Today') return [dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate()];
+
+        const currentDayOfWeek = dateObj.getDay();
+        const targetdayOfTheWeek = days[day];
+        let difference;
+
+        if (targetdayOfTheWeek < currentDayOfWeek) {
+            difference = currentDayOfWeek - targetdayOfTheWeek;
+        } else {
+            difference = 7 - targetdayOfTheWeek + currentDayOfWeek;
+        }
+
+        const dateInMilliseconds = dateObj.getTime() - difference * 86400000;
+        const newDateObj = new Date(dateInMilliseconds);
+
+        return [newDateObj.getFullYear(), newDateObj.getMonth(), newDateObj.getDate()];
+    }
+
+    function getMonth(month) {
+        return months[month];
+    }
+
+    function getDay(day) {
+        return parseInt(day.replace(/[^0-9]/g, ''));
+    }
+
+    function getTime(time, ampm) {
+        const times = time.split(':');
+
+        return [getHour(parseInt(times[0]), ampm), parseInt(times[1])];
+    }
+
+    function getHour(hour, ampm) {
+        if (hour === 12 && ampm === 'AM') return 0;
+        if (hour === 12 && ampm === 'PM') return 12;
+        if (ampm === 'AM') return hour;
+        if (ampm === 'PM') return hour + 12;
+    }
 }
+
+console.log(parseDates('Jan 12th 1:09 AM').toGMTString());
+console.log(parseDates('Today 8:15 PM').toGMTString());
+console.log(parseDates('Sunday 12:59 PM').toGMTString());
 
 module.exports = parseDates;
