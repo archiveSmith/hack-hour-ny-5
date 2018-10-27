@@ -10,7 +10,31 @@
 */
 
 function solveKnapsack(items, weightAvailable) {
+  let combos = [[]];
+  let max = 0;
 
+  for (let i = 0; i < items.length; i++) {
+    const combosCopy = [];
+
+    for (let j = 0; j < combos.length; j++) {
+      const comboCopy = combos[j].slice();
+      comboCopy.push(i);
+      const weightSum = comboCopy.reduce((a, c) => a + items[c].weight, 0);
+      const valueSum = comboCopy.reduce((a, c) => a + items[c].value, 0);
+
+      if (weightSum <= weightAvailable) {
+        combosCopy.push(comboCopy);
+
+        if (valueSum > max) {
+          max = valueSum;
+        }
+      }
+    }
+
+    combos = combos.concat(combosCopy);
+  }
+
+  return max;
 };
 
 module.exports = solveKnapsack;
