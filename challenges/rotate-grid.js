@@ -47,19 +47,8 @@ function rotateGrid(grid, n) {
       }
     }
   }
+
+  return grid;
 }
-
-
-
-const sampleGrid2 = [[1, 2], [3, 4]];
-const sampleGrid3 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-const sampleGrid4 = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
-
-rotateGrid(sampleGrid2, 2)
-console.log(sampleGrid2);
-rotateGrid(sampleGrid3, 3);
-console.log(sampleGrid3);
-rotateGrid(sampleGrid4, 4);
-console.log(sampleGrid4);
 
 module.exports = rotateGrid;
