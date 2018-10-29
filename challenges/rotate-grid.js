@@ -24,6 +24,8 @@ function rotateGrid(grid, n) {
       newGrid[j][n - i - 1] = grid[i][j];
     }
   }
+
+  return newGrid;
 }
 
 const sampleGrid = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
