@@ -2,8 +2,19 @@
  * Use recursion!
  */
 
-function pow(base, power) {
-
-}
+ function pow(base, power) {
+   if(!base || !power || typeof base !== 'number' || typeof power !== 'number') return undefined;
+   let result = 1;
+   let count = 0;
+   while (count < power) {
+   if (count < power) {
+     result *= base;
+     count ++;
+   } else {
+     pow(result, power);
+   }
+ }
+   return result;
+ }
 
 module.exports = pow;

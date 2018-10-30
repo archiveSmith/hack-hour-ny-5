@@ -13,8 +13,23 @@
  * DO NOT USE THE BUILT IN REVERSE METHOD
  */
 
+<<<<<<< HEAD
+ function reverseInPlace(array) {
+   // handling edge case
+   if(!Array.isArray(array)) return;
+  // looping through the array to get indeces of the elements to swap
+   for(let i = 0; i < array.length / 2; i++) {
+     let insertAtIndex = array.length - 1 - i;
+     let temp = array[i];
+     array[i] = array[insertAtIndex];
+     array[insertAtIndex] = temp;
+   }
+   return array;
+ }
+=======
 function reverseInPlace(array) {
 
 }
+>>>>>>> 13bcbbaeb10577fc3a298b4d86c18eb67ac573a9
 
 module.exports = reverseInPlace;

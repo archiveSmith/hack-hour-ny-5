@@ -18,7 +18,35 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-
+  if(!l1 || !l2) return undefined;
+  let sum = new Node(l1.value + l2.value);
+  let sumHead = sum;
+  l1 = l1.next;
+  l2 = l2.next;
+  while(l1 || l2) {    
+    if(l1.value + l2.value > 9) {
+      sum.next = new Node((l1.value + l2.value) % 10);
+      sum.next.next = new Node(1);
+    } else if (sum.next) {
+      sum.next.value += l1.value + l2.value;
+    } else {
+      sum.next = new Node(l1.value + l2.value);
+    }
+    l1 = l1.next;
+    l2 = l2.next;
+    sum = sum.next;
+  }
+  return sumHead;
 }
+
+// let l1 = new Node(2);
+// l1.next = new Node(1);
+// l1.next.next = new Node(5);
+
+// let l2 = new Node(5);
+// l2.next = new Node(9);
+// l2.next.next = new Node(2);
+
+// console.log(addLinkedList(l1, l2));
 
 module.exports = {Node: Node, addLinkedList: addLinkedList};
