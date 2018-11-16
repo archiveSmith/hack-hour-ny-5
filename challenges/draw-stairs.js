@@ -14,14 +14,11 @@
 */
 
 function drawStairs(n) {
-  let str = '';
-
-  for (let i = 1; i <= n; i++) {
-    str += '*'.repeat(i).padStart(n, ' ');
-    str += '\n';
+  for (var i = 1; i <= n; i++) {
+    var spaces = ' '.repeat(n - i);
+    var splats = '*'.repeat(i);
+    console.log(spaces + splats);
   }
-
-  console.log(str);
 }
 
 module.exports = drawStairs;
