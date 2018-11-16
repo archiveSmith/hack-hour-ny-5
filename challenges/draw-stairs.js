@@ -21,6 +21,7 @@ function drawStairs(n) {
     str += '\n';
   }
 
+
   return str;
 }
 
