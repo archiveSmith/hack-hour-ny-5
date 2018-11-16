@@ -4,13 +4,12 @@
 
 function twoSum(arr, n) {
   const lookup = {};
-  const { length } = arr;
 
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     const num = arr[i];
-    lookup[num] = true;
-    const difference = target - num;
+    const difference = n - num;
     if (lookup[difference]) return true;
+    lookup[num] = true;
   }
 
   return false;

@@ -16,39 +16,49 @@
  * BONUS: Do this in place
  */
 
-// function rotateGrid(grid, n) {
-//   const newGrid = [];
-
-//   for (let col = 0; col < n; col++) {
-//     const newRow = [];
-
-//     for (let row = n - 1; row >= 0; row--) {
-//       newRow.push(grid[row][col]);
-//     }
-
-//     newGrid.push(newRow);
-//   }
-
-// }
-
+// O(n ^ 2) time, O(n) space
 function rotateGrid(grid, n) {
-  for (let x = 0; x < Math.ceil(n / 2); x++) {
-    for (let y = x; y < n - x - 1; y++) {
-      let save;
-      let transfer = grid[x][y];
+  const newGrid = [];
 
-      for (let k = 0; k < 4; k++) {
-        save = grid[y][n - x - 1];
-        grid[y][n - x - 1] = transfer;
-        transfer = save;
-        let temp = x;
-        x = y;
-        y = n - temp - 1;
-      }
+  for (let col = 0; col < n; col++) {
+    const newRow = [];
+
+    for (let row = n - 1; row >= 0; row--) {
+      newRow.push(grid[row][col]);
+    }
+
+    newGrid.push(newRow);
+  }
+}
+
+// O(n ^ 2) time, O(1) space
+function rotateGrid(grid, n) {
+  for (let i = 0; i < Math.floor(n / 2); i++) {
+    let first = i;
+    const last = n - 1 - i;
+
+    for (let j = first; j < last; j++) {
+      const adjust = j - first;
+      const top = grid[first][j];
+
+      // left -> top
+      grid[first][j] = grid[last - adjust][first];
+
+      // bottom -> left
+      grid[last - adjust][first] = grid[last][last - adjust];
+
+      // right -> bottom
+      grid[last][last - adjust] = grid[j][last];
+
+      // top -> right
+      grid[j][last] = top;
     }
   }
-
   return grid;
 }
+
+const grid = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+console.log(rotateGrid(grid, 3));
 
 module.exports = rotateGrid;
