@@ -21,8 +21,7 @@ function drawStairs(n) {
     str += '\n';
   }
 
-
-  return str;
+  console.log(str);
 }
 
 module.exports = drawStairs;
