@@ -27,13 +27,43 @@
  *
  */
 
-var Node = function(value) {
+var Node = function (value) {
   this.value = value;
   this.next = null;
 }
 
-function hasCycle(head) {
+// O(n^2) time - O(n) space
+// function hasCycle(head) {
+//   const cache = [];
+//   let currentNode = head;
 
+//   while (currentNode) {
+//     if (cache.includes(currentNode)) {
+//       return true;
+//     }
+
+//     cache.push(currentNode);
+//     currentNode = currentNode.next;
+//   }
+
+//   return false;
+// }
+
+// O(n) time - O(1) space
+function hasCycle(head) {
+  let slow = head;
+  let fast = head;
+
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+
+    if (slow === fast) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
-module.exports = {Node: Node, hasCycle: hasCycle}
+module.exports = { Node: Node, hasCycle: hasCycle }
