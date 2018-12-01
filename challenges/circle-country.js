@@ -23,16 +23,21 @@
  */
 
 function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
-  return r.reduce((accum, rad, i) => {
+  let borderCount = 0;
+
+  for (let i = 0; i < x.length; i++) {
     const curr_x = x[i];
     const curr_y = y[i];
-    const startDistance = Math.sqrt((curr_x - start_x) ** 2 + (curr_y - start_y) ** 2);
-    const endDistance = Math.sqrt((curr_x - end_x) ** 2 + (curr_y - end_y) ** 2);
+    const curr_r = r[i];
+    const startDistance = ((curr_x - start_x) ** 2 + (curr_y - start_y) ** 2);
+    const endDistance = ((curr_x - end_x) ** 2 + (curr_y - end_y) ** 2);
 
-    return (startDistance < rad && endDistance > rad) || (startDistance > rad && endDistance < rad)
-      ? accum++
-      : accum;
-  }, 0);
+    if ((startDistance < curr_r && endDistance > curr_r) || (startDistance > curr_r && endDistance < curr_r)) {
+      borderCount++;
+    }
+  }
+
+  return borderCount;
 }
 
 module.exports = circleCountry;
