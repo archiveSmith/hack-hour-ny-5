@@ -29,8 +29,8 @@ function circleCountry(x, y, r, start_x, start_y, end_x, end_y) {
     const curr_x = x[i];
     const curr_y = y[i];
     const curr_r = r[i];
-    const startDistance = ((curr_x - start_x) ** 2 + (curr_y - start_y) ** 2);
-    const endDistance = ((curr_x - end_x) ** 2 + (curr_y - end_y) ** 2);
+    const startDistance = Math.sqrt((curr_x - start_x) ** 2 + (curr_y - start_y) ** 2);
+    const endDistance = Math.sqrt((curr_x - end_x) ** 2 + (curr_y - end_y) ** 2);
 
     if ((startDistance < curr_r && endDistance > curr_r) || (startDistance > curr_r && endDistance < curr_r)) {
       borderCount++;
