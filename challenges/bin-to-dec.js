@@ -3,7 +3,7 @@
  * Write a function that converts the binary string to a decimal number
  *
  * Example:
-* 	binToDec('0')   -> 0
+ * 	binToDec('0')   -> 0
  * 	binToDec('11')  -> 3
  * 	binToDec('100') -> 4
  * 	binToDec('101') -> 5
@@ -14,15 +14,51 @@
  */
 
 function binToDec(binary) {
-  let sum = 0;
+  const { length } = binary;
+  let decimal = 0;
 
-  for (let i = binary.length - 1; i >= 0; i--) {
-    if (binary[i] === '1') {
-      sum += Math.pow(2, binary.length - i - 1);
-    }
+  for (let i = 0; i < length; i++) {
+    const exp = length - 1 - i;
+    decimal += binary[i] * Math.pow(2, exp);
   }
 
-  return sum;
+  return decimal;
 }
+
+console.log(binToDec('0'));
+console.log(binToDec('11'));
+console.log(binToDec('100'));
+console.log(binToDec('101'));
+console.log(binToDec('0101'));
+
+function decToBin(decimal) {
+  if (decimal === 0) {
+    return '0';
+  }
+
+  let binary = '';
+  let exp = Math.floor(Math.log2(decimal));
+  let binColumn = 2 ** exp;
+  
+  while (exp >= 0) {
+    if (decimal >= binColumn) {
+      binary += '1';
+      decimal -= binColumn;
+    } else {
+      binary += '0';
+    }
+
+    exp--;
+    binColumn = 2 ** exp;
+  }
+  
+  return binary;
+}
+
+console.log(decToBin(0)); // 0
+console.log(decToBin(3)); // 11
+console.log(decToBin(4)); // 100
+console.log(decToBin(5)); // 101
+console.log(decToBin(101)); // 1100101
 
 module.exports = binToDec;
