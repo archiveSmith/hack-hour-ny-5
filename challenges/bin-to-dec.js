@@ -25,12 +25,6 @@ function binToDec(binary) {
   return decimal;
 }
 
-console.log(binToDec('0'));
-console.log(binToDec('11'));
-console.log(binToDec('100'));
-console.log(binToDec('101'));
-console.log(binToDec('0101'));
-
 function decToBin(decimal) {
   if (decimal === 0) {
     return '0';
@@ -54,11 +48,5 @@ function decToBin(decimal) {
   
   return binary;
 }
-
-console.log(decToBin(0)); // 0
-console.log(decToBin(3)); // 11
-console.log(decToBin(4)); // 100
-console.log(decToBin(5)); // 101
-console.log(decToBin(101)); // 1100101
 
 module.exports = binToDec;
