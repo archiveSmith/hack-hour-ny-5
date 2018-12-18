@@ -20,29 +20,52 @@ eachPermutation([1, 2, 3], function(perm) {
 [ 3, 2, 1 ]
 */
 
+// function eachPermutation(arr, callback) {
+//   function getPermutations(arr) {
+//     if (arr.length <= 1) return [arr];
+
+//     const first = [arr[0]];
+//     const rest = arr.slice(1);
+
+//     return getPermutations(rest).reduce((accum, perm) => {
+//       for (let i = 0; i <= rest.length; i++) {
+//         accum.push(
+//           perm
+//             .slice(0, i)
+//             .concat(first)
+//             .concat(perm.slice(i))
+//         );
+//       }
+
+//       return accum;
+//     }, []);
+//   }
+
+//   const perms = getPermutations(arr);
+//   perms.forEach(perm => callback(perm));
+// }
+
+// Backtracking & Decrease and Conquer O(n!)
 function eachPermutation(arr, callback) {
-  function getPermutations(arr) {
-    if (arr.length <= 1) return [arr];
+  return permute(arr, 0);
 
-    const first = [arr[0]];
-    const rest = arr.slice(1);
+  function permute(array, element) {
+    for (let i = element; i < array.length; i++) {
+      swap(array, i, element);
+      permute(array, element + 1);
+      swap(array, element, i);
+    }
 
-    return getPermutations(rest).reduce((accum, perm) => {
-      for (let i = 0; i <= rest.length; i++) {
-        accum.push(
-          perm
-            .slice(0, i)
-            .concat(first)
-            .concat(perm.slice(i))
-        );
-      }
-
-      return accum;
-    }, []);
+    if (element === array.length - 1) {
+      callback(array);
+    }
   }
 
-  const perms = getPermutations(arr);
-  perms.forEach(perm => callback(perm));
+  function swap(array, index1, index2) {
+    const temp = array[index1];
+    array[index1] = array[index2];
+    array[index2] = temp;
+  }
 }
 
 eachPermutation([1, 2, 3], function(perm) {
